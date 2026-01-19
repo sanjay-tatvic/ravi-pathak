@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 30% 8%;
+    --foreground: 40 20% 95%;
+
+    --card: 222 25% 12%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 222 25% 12%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 45 85% 55%;
+    --primary-foreground: 222 30% 8%;
+
+    --secondary: 222 20% 18%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 222 20% 20%;
+    --muted-foreground: 220 15% 60%;
+
+    --accent: 45 85% 55%;
+    --accent-foreground: 222 30% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 20% 20%;
+    --input: 222 20% 20%;
+    --ring: 45 85% 55%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --gold: 45 85% 55%;
+    --gold-muted: 45 60% 45%;
+    --navy-light: 222 25% 16%;
+    --cream: 40 20% 95%;
+    --cream-muted: 40 15% 75%;
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 222 30% 8%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 45 85% 55%;
+    --sidebar-primary-foreground: 222 30% 8%;
+    --sidebar-accent: 222 20% 18%;
+    --sidebar-accent-foreground: 40 20% 95%;
+    --sidebar-border: 222 20% 20%;
+    --sidebar-ring: 45 85% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(45 70% 70%) 100%);
+  }
+
+  .border-gradient-gold {
+    border-image: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-muted)) 100%) 1;
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 40px -10px hsl(var(--gold) / 0.3);
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
