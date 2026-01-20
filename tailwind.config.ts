@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
-
+import plugin from "tailwindcss/plugin";
+ 
 export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
@@ -94,5 +95,21 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          "bg-grid": (value) => ({
+            backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='${value}'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e")`,
+          }),
+          "bg-dot": (value) => ({
+            backgroundImage: `radial-gradient(${value} 1px, transparent 1px)`,
+            backgroundSize: "15px 15px",
+          }),
+        },
+        { values: theme("backgroundColor"), type: "color" }
+      );
+    }),
+  ],
 } satisfies Config;
